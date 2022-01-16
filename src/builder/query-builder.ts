@@ -16,19 +16,26 @@ export enum Operation {
 }
 
 export interface OperationNode {
-    readonly table: string;
-    readonly alias?: string;
     readonly column: string;
     readonly operation: Operation;
     readonly value: unknown;
-    readonly child?: OperationNode;
     readonly variablesName?: string;
     readonly query?: string;
-    readonly variables?: Record<string, unknown>;
     readonly index: number;
 }
 
+export interface OperationNodeList {
+    readonly table: string;
+    readonly alias?: string;
+    readonly operations: OperationNode[];
+    readonly child?: OperationNodeList;
+    readonly query?: string;
+    readonly variables?: Record<string, unknown>;
+}
+
 export interface QueryBuilder {
-    createQuery: (operationNode: OperationNode) => OperationNode;
-    createVariables: (operationNode: OperationNode) => OperationNode;
+    createQuery: (operationNodeList: OperationNodeList) => OperationNodeList;
+    createVariables: (
+        operationNodeList: OperationNodeList,
+    ) => OperationNodeList;
 }
