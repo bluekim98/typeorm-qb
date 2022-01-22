@@ -34,6 +34,7 @@ export interface OperationNodeList {
 }
 
 export interface QueryBuilder {
+    build: (operationNodeList: OperationNodeList) => OperationNodeList;
     createQuery: (operationNodeList: OperationNodeList) => OperationNodeList;
     createVariables: (
         operationNodeList: OperationNodeList,

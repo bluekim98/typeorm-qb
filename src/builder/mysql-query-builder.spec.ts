@@ -3,8 +3,8 @@ import { Operation, OperationNode, OperationNodeList } from './query-builder';
 import * as R from 'ramda';
 
 describe('MysqlQueryBuilder', () => {
-    const key = 'test';
-    const mysqlQueryBuilder = new MysqlQueryBuilder(key);
+    const transactionKey = 'test';
+    const mysqlQueryBuilder = new MysqlQueryBuilder(transactionKey);
 
     it('is defined', () => {
         expect(mysqlQueryBuilder).toBeDefined();
